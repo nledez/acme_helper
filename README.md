@@ -1,5 +1,8 @@
 # acme_helper
 
+This tool use https://github.com/diafygi/acme-tiny to manage
+https://letsencrypt.org/ certificate.
+
 ## Requirements
 
 * Python 3
@@ -23,6 +26,9 @@ cp config.yaml /etc/acme-tiny/
 openssl genrsa 4096 > /etc/acme-tiny/account.key
 mkdir -p /var/www/letsencrypt
 ```
+
+You didn't need to install acme-tiny. It's done the first time by the script.
+It's cloned in "/usr/local/acme-tiny".
 
 ## Generate new certificate
 ```
