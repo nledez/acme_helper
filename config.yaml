@@ -1,0 +1,19 @@
+certificates:
+  path: /etc/acme-tiny/config.d/*.yaml
+services:
+  nginx: /etc/init.d/nginx reload
+  postfix: /usr/sbin/service postfix restart
+acme:
+  tiny_path: /usr/local/acme-tiny
+  key: /etc/acme-tiny/account.key
+  priv_path: /etc/ssl/private/{}/domain.key 
+  cert_path: /etc/ssl/private/{}/signed.crt
+  request_path: /etc/ssl/private/{}/domain.csr
+  chain_pem_path: /etc/ssl/private/{}/chained.pem
+  chalenge_path: /var/www/letsencrypt
+  intermediate_certs: /etc/acme-tiny/intermediate-ca.pem
+  intermediate_url: https://letsencrypt.org/certs/lets-encrypt-x3-cross-signed.pem
+  cmd_priv_key: 'openssl genrsa 4096 > {}'
+  cmd_csr: 'openssl req -new -sha256 -key {} -subj "/CN={}" > {}'
+  cmd_self_sign: 'openssl x509 -in {} -out {} -req -signkey {} -days 15'
+  cron_filename: /etc/cron.d/acme_helper

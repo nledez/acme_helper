@@ -1,0 +1,4 @@
+www.example.com:
+  restart:
+    - nginx
+    - postfix
